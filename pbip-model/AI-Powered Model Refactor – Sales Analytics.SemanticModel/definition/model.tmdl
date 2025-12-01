@@ -10,5 +10,9 @@ annotation __PBI_TimeIntelligenceEnabled = 0
 
 annotation PBI_ProTooling = ["DevMode"]
 
+annotation PBI_QueryOrder = ["fact_Sales"]
+
+ref table fact_Sales
+
 ref cultureInfo en-US
 
