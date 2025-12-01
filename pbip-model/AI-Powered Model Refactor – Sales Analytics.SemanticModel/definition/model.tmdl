@@ -10,9 +10,49 @@ annotation __PBI_TimeIntelligenceEnabled = 0
 
 annotation PBI_ProTooling = ["DevMode"]
 
-annotation PBI_QueryOrder = ["SalesRaw"]
+annotation PBI_QueryOrder = ["dim_Date","dim_Customer","dim_Product","dim_Salesperson","fact_Sales"]
 
-ref table SalesRaw
+ref table dim_Date
+
+ref table dim_Customer
+
+ref table dim_Product
+
+ref table dim_Salesperson
+
+ref table fact_Sales
+
+relationship rel_factSales_dim_Customer
+	fromTable: fact_Sales
+	fromColumn: CustomerKey
+	toTable: dim_Customer
+	toColumn: CustomerKey
+	cardinality: ManyToOne
+	crossFilteringBehavior: Single
+
+relationship rel_factSales_dim_Product
+	fromTable: fact_Sales
+	fromColumn: ProductKey
+	toTable: dim_Product
+	toColumn: ProductID
+	cardinality: ManyToOne
+	crossFilteringBehavior: Single
+
+relationship rel_factSales_dim_Date
+	fromTable: fact_Sales
+	fromColumn: DateKey
+	toTable: dim_Date
+	toColumn: DateKey
+	cardinality: ManyToOne
+	crossFilteringBehavior: Single
+
+relationship rel_factSales_dim_Salesperson
+	fromTable: fact_Sales
+	fromColumn: SalespersonKey
+	toTable: dim_Salesperson
+	toColumn: SalespersonKey
+	cardinality: ManyToOne
+	crossFilteringBehavior: Single
 
 ref cultureInfo en-US
 

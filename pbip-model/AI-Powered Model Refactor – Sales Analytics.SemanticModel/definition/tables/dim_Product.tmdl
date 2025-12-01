@@ -1,0 +1,40 @@
+table dim_Product
+    lineageTag: dim-Product-001
+
+    column ProductKey
+        dataType: int64
+        lineageTag: dim-Product-pk
+        summarizeBy: none
+        isHidden: true
+
+    column ProductID
+        dataType: string
+        lineageTag: dim-Product-srcid
+        summarizeBy: none
+        isHidden: true
+
+    column ProductName
+        dataType: string
+        lineageTag: dim-Product-name
+        summarizeBy: none
+
+    column ProductCategory
+        dataType: string
+        lineageTag: dim-Product-cat
+        summarizeBy: none
+
+    partition dim_Product = m
+        mode: import
+        source =
+                let
+                    Source = Excel.Workbook(File.Contents("C:\\Users\\FrederickAmougou\\Projects\\powerbi-mcp-demo-model-refactor\\messy_sales_raw.xlsx"), null, true),
+                    Sheet1 = Source{[Item="Sheet1",Kind="Sheet"]}[Data],
+                    Promoted = Table.PromoteHeaders(Sheet1, [PromoteAllScalars=true]),
+                    Changed = Table.TransformColumnTypes(Promoted,{{"Product ID", type text}, {"Product Name", type text}, {"product_category", type text}}),
+                    Distinct = Table.Distinct(Table.SelectColumns(Changed,{"Product ID","Product Name","product_category"})),
+                    WithIndex = Table.AddIndexColumn(Distinct, "ProductKey", 1, 1, Int64.Type),
+                    Renamed = Table.RenameColumns(WithIndex,{{"Product ID","ProductID"},{"product_category","ProductCategory"},{"Product Name","ProductName"}})
+                in
+                    Renamed
+
+    annotation PBI_ResultType = Table

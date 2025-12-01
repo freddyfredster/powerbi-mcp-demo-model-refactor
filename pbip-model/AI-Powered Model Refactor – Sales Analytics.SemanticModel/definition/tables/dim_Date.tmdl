@@ -1,0 +1,64 @@
+table dim_Date
+    lineageTag: dim-Date-001
+
+    column DateKey
+        dataType: int64
+        lineageTag: dim-Date-dk
+        summarizeBy: none
+        isHidden: true
+
+    column Date
+        dataType: dateTime
+        lineageTag: dim-Date-date
+        summarizeBy: none
+
+    column Year
+        dataType: int64
+        lineageTag: dim-Date-year
+        summarizeBy: none
+
+    column Month
+        dataType: int64
+        lineageTag: dim-Date-month
+        summarizeBy: none
+
+    column MonthName
+        dataType: string
+        lineageTag: dim-Date-monthname
+        summarizeBy: none
+
+    column Day
+        dataType: int64
+        lineageTag: dim-Date-day
+        summarizeBy: none
+
+    column FiscalYear
+        dataType: int64
+        lineageTag: dim-Date-fy
+        summarizeBy: none
+
+    partition dim_Date = m
+        mode: import
+        source =
+                let
+                    Source = Excel.Workbook(File.Contents("C:\\Users\\FrederickAmougou\\Projects\\powerbi-mcp-demo-model-refactor\\messy_sales_raw.xlsx"), null, true),
+                    Sheet1 = Source{[Item="Sheet1",Kind="Sheet"]}[Data],
+                    Promoted = Table.PromoteHeaders(Sheet1, [PromoteAllScalars=true]),
+                    // Ensure we parse candidate date columns and create a canonical OrderDate
+                    ParseDates = Table.TransformColumnTypes(Promoted,{{"order_dt", type date}, {"Date_of_Order", type datetime}, {"orderdate", type any}, {"Order Date", type text}, {"Fiscal Year", Int64.Type}}),
+                    AddOrderDate = Table.AddColumn(ParseDates, "OrderDate", each if [order_dt] <> null then Date.From([order_dt]) else if [Date_of_Order] <> null then Date.From([Date_of_Order]) else try Date.From(DateTime.FromText([orderdate])) otherwise try Date.From(DateTime.FromText([Order Date])) otherwise null, type date),
+                    SelectDates = Table.SelectColumns(AddOrderDate,{"OrderDate","Fiscal Year"}),
+                    FilterNotNull = Table.SelectRows(SelectDates, each [OrderDate] <> null),
+                    Distinct = Table.Distinct(FilterNotNull),
+                    WithFields = Table.TransformColumns(Distinct,{{"OrderDate", each Date.From(_), type date}}),
+                    AddedColumns = Table.AddColumn(WithFields, "DateKey", each Number.From(Date.Year([OrderDate]))*10000 + Number.From(Date.Month([OrderDate]))*100 + Number.From(Date.Day([OrderDate])), Int64.Type),
+                    Final = Table.RenameColumns(Table.SelectColumns(AddedColumns,{"DateKey","OrderDate","Fiscal Year"}),{{"OrderDate","Date"},{"Fiscal Year","FiscalYear"}}),
+                    WithYMD = Table.AddColumn(Final, "Year", each Date.Year([Date]), Int64.Type),
+                    WithMonth = Table.AddColumn(WithYMD, "Month", each Date.Month([Date]), Int64.Type),
+                    WithMonthName = Table.AddColumn(WithMonth, "MonthName", each Date.ToText([Date], "MMMM"), type text),
+                    WithDay = Table.AddColumn(WithMonthName, "Day", each Date.Day([Date]), Int64.Type),
+                    Reordered = Table.SelectColumns(WithDay,{"DateKey","Date","Year","Month","MonthName","Day","FiscalYear"})
+                in
+                    Reordered
+
+    annotation PBI_ResultType = Table

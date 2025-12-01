@@ -1,0 +1,34 @@
+table dim_Salesperson
+    lineageTag: dim-Salesperson-001
+
+    column SalespersonKey
+        dataType: string
+        lineageTag: dim-Salesperson-sk
+        summarizeBy: none
+        isHidden: true
+
+    column SalespersonName
+        dataType: string
+        lineageTag: dim-Salesperson-name
+        summarizeBy: none
+
+    column Region
+        dataType: string
+        lineageTag: dim-Salesperson-region
+        summarizeBy: none
+
+    partition dim_Salesperson = m
+        mode: import
+        source =
+                let
+                    Source = Excel.Workbook(File.Contents("C:\\Users\\FrederickAmougou\\Projects\\powerbi-mcp-demo-model-refactor\\messy_sales_raw.xlsx"), null, true),
+                    Sheet1 = Source{[Item="Sheet1",Kind="Sheet"]}[Data],
+                    Promoted = Table.PromoteHeaders(Sheet1, [PromoteAllScalars=true]),
+                    Changed = Table.TransformColumnTypes(Promoted,{{"Salesperson", type text}, {"Region", type text}}),
+                    Distinct = Table.Distinct(Table.SelectColumns(Changed,{"Salesperson","Region"})),
+                    Renamed = Table.RenameColumns(Distinct,{{"Salesperson","SalespersonName"},{"Region","Region"}}),
+                    WithKey = Table.AddColumn(Renamed, "SalespersonKey", each [SalespersonName], type text)
+                in
+                    Table.SelectColumns(WithKey,{"SalespersonKey","SalespersonName","Region"})
+
+    annotation PBI_ResultType = Table
