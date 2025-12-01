@@ -44,7 +44,7 @@ This demo shows how to use the **Power BI Modeling MCP Server** with **GitHub Co
 
 ## 📂 Repo Structure
 
-'''
+```
 powerbi-mcp-demo-model-refactor/
 │
 ├── README.md
@@ -68,9 +68,7 @@ powerbi-mcp-demo-model-refactor/
 ├── walkthrough.md
 ├── mcp-architecture.png
 └── what-changed.md
-,,,
-
-
+```
 ---
 
 ## 📝 How to Run This Yourself
