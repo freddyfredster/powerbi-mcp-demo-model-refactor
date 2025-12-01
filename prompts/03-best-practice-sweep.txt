@@ -1,0 +1,16 @@
+@powerbi Run semantic model best-practice checks.
+
+1. Identify ambiguous relationships and propose fixes.
+2. Detect columns with mixed data types and correct them.
+3. Ensure all numeric columns use the correct format:
+   - Currency
+   - Whole number
+   - Decimal
+
+4. Suggest consistent naming conventions for:
+   - date columns
+   - ID columns
+   - metrics
+
+5. Hide technical tables (e.g., staging tables).
+6. Apply all fixes and give me a before/after change list.
