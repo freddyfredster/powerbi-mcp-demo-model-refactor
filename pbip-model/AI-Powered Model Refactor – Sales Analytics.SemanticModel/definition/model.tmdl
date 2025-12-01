@@ -22,37 +22,5 @@ ref table dim_Salesperson
 
 ref table fact_Sales
 
-relationship rel_factSales_dim_Customer
-	fromTable: fact_Sales
-	fromColumn: CustomerKey
-	toTable: dim_Customer
-	toColumn: CustomerKey
-	cardinality: ManyToOne
-	crossFilteringBehavior: Single
-
-relationship rel_factSales_dim_Product
-	fromTable: fact_Sales
-	fromColumn: ProductKey
-	toTable: dim_Product
-	toColumn: ProductID
-	cardinality: ManyToOne
-	crossFilteringBehavior: Single
-
-relationship rel_factSales_dim_Date
-	fromTable: fact_Sales
-	fromColumn: DateKey
-	toTable: dim_Date
-	toColumn: DateKey
-	cardinality: ManyToOne
-	crossFilteringBehavior: Single
-
-relationship rel_factSales_dim_Salesperson
-	fromTable: fact_Sales
-	fromColumn: SalespersonKey
-	toTable: dim_Salesperson
-	toColumn: SalespersonKey
-	cardinality: ManyToOne
-	crossFilteringBehavior: Single
-
 ref cultureInfo en-US
 
