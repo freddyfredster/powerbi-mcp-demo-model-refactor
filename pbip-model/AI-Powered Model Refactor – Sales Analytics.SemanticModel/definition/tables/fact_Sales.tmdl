@@ -55,16 +55,6 @@ table fact_Sales
         lineageTag: fs-Net
         summarizeBy: sum
 
-    column Tax Amount
-        dataType: double
-        lineageTag: fs-Tax
-        summarizeBy: sum
-
-    column Total Amount
-        dataType: double
-        lineageTag: fs-Total
-        summarizeBy: sum
-
     column Order_Status
         dataType: string
         lineageTag: fs-OrderStatus
