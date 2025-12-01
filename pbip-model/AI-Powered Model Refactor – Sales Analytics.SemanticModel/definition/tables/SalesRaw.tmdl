@@ -1,10 +1,9 @@
 table SalesRaw
-	isHidden: true
-	lineageTag: d131fb43-3cc0-47db-8163-8235a01f2c46
+	lineageTag: f807f169-1d76-4b23-af47-95159b4915a7
 
 	column OrderID
 		dataType: string
-		lineageTag: d8dbc2a8-b009-4d06-b40e-9294d47fdf79
+		lineageTag: cc7c28e1-4e0e-432b-aa42-1f89d68380e6
 		summarizeBy: none
 		sourceColumn: OrderID
 
@@ -12,7 +11,7 @@ table SalesRaw
 
 	column 'Order Date'
 		dataType: string
-		lineageTag: b32e88c2-262a-4e61-acd4-c862ff9d76ae
+		lineageTag: a72a1a16-622e-4371-b129-237195cf4d41
 		summarizeBy: none
 		sourceColumn: Order Date
 
@@ -20,7 +19,7 @@ table SalesRaw
 
 	column orderdate
 		dataType: string
-		lineageTag: bec69fce-293a-488b-a3b3-ce6f37192800
+		lineageTag: 3a34fa88-fe9b-4e92-a513-aedbd654dcb6
 		summarizeBy: none
 		sourceColumn: orderdate
 
@@ -29,7 +28,7 @@ table SalesRaw
 	column Date_of_Order
 		dataType: dateTime
 		formatString: General Date
-		lineageTag: b1724322-c6a1-4727-969d-70fdabf6d695
+		lineageTag: 455e908a-a49a-44d4-96e5-842b286ba31a
 		summarizeBy: none
 		sourceColumn: Date_of_Order
 
@@ -38,7 +37,7 @@ table SalesRaw
 	column 'Cust ID'
 		dataType: int64
 		formatString: 0
-		lineageTag: 70202567-bb79-40a7-af16-bbe76d4a2779
+		lineageTag: dada90b0-029b-4326-bdd4-0585a84a1714
 		summarizeBy: count
 		sourceColumn: Cust ID
 
@@ -46,7 +45,7 @@ table SalesRaw
 
 	column 'Customer Name'
 		dataType: string
-		lineageTag: ae5d439b-4170-4b96-9f51-518a17e0b741
+		lineageTag: 5d289bcf-987e-4dca-81ea-9401846ce254
 		summarizeBy: none
 		sourceColumn: Customer Name
 
@@ -54,7 +53,7 @@ table SalesRaw
 
 	column customer_email
 		dataType: string
-		lineageTag: 420538a8-67b2-48dd-acd3-52de3b1471bb
+		lineageTag: 77fd2fbb-ad54-47e1-9ab9-cee59d30adee
 		summarizeBy: none
 		sourceColumn: customer_email
 
@@ -62,7 +61,7 @@ table SalesRaw
 
 	column 'Customer Segment'
 		dataType: string
-		lineageTag: 4f984d1b-cfff-4de9-9ad6-3176455e555d
+		lineageTag: 628c3e26-7f28-49eb-b219-4cc12877a4f0
 		summarizeBy: none
 		sourceColumn: Customer Segment
 
@@ -70,7 +69,7 @@ table SalesRaw
 
 	column Region
 		dataType: string
-		lineageTag: ae8bfd0d-caf2-4941-bc9b-e90386fa6e7e
+		lineageTag: 4caef962-3ec1-426a-9206-f28268b362a3
 		summarizeBy: none
 		sourceColumn: Region
 
@@ -78,7 +77,7 @@ table SalesRaw
 
 	column Salesperson
 		dataType: string
-		lineageTag: 710a4f9a-31f0-465e-abbb-60c1dceb1b48
+		lineageTag: 01c61eae-3e30-4658-84d9-6551059a0892
 		summarizeBy: none
 		sourceColumn: Salesperson
 
@@ -86,7 +85,7 @@ table SalesRaw
 
 	column channel
 		dataType: string
-		lineageTag: 205f68c6-d896-4e3f-a759-b33132a534db
+		lineageTag: d8eb0f9a-2e31-432f-b758-a147f25ccf77
 		summarizeBy: none
 		sourceColumn: channel
 
@@ -94,7 +93,7 @@ table SalesRaw
 
 	column 'Product ID'
 		dataType: string
-		lineageTag: 25bca956-5ca9-4740-ae15-2a69e09f01f5
+		lineageTag: 615277cf-3b5a-418a-8dbe-afe70fa1e68a
 		summarizeBy: none
 		sourceColumn: Product ID
 
@@ -102,7 +101,7 @@ table SalesRaw
 
 	column 'Product Name'
 		dataType: string
-		lineageTag: df3b46cf-7bb7-4c88-a622-1f4e25ce5808
+		lineageTag: 73eafd38-a889-4e9d-88fe-6afcc307b43a
 		summarizeBy: none
 		sourceColumn: Product Name
 
@@ -110,7 +109,7 @@ table SalesRaw
 
 	column product_category
 		dataType: string
-		lineageTag: faf4bcdd-cdd5-4560-bb6e-834c2a76ef7a
+		lineageTag: d0e78839-4c9c-4034-bbe8-65c39eef19ad
 		summarizeBy: none
 		sourceColumn: product_category
 
@@ -118,7 +117,7 @@ table SalesRaw
 
 	column Qty
 		dataType: string
-		lineageTag: a8c538ca-6ec9-4fa0-8b72-ade61c5e4087
+		lineageTag: 27097909-12f5-46dc-b2ed-04aaf57380e7
 		summarizeBy: none
 		sourceColumn: Qty
 
@@ -126,7 +125,7 @@ table SalesRaw
 
 	column 'Unit Price'
 		dataType: string
-		lineageTag: 885dfe32-9b88-45a0-bc90-2e4719271125
+		lineageTag: dfbb77e6-e6b0-44d4-bf88-46c5a3e24a19
 		summarizeBy: none
 		sourceColumn: Unit Price
 
@@ -135,7 +134,7 @@ table SalesRaw
 	column 'discount %'
 		dataType: int64
 		formatString: 0
-		lineageTag: a3c51b54-ac32-4d5a-95de-ae1e2f6ce5bc
+		lineageTag: 818c71fc-c501-4ddc-a19b-bc90eaf2b6d1
 		summarizeBy: sum
 		sourceColumn: discount %
 
@@ -143,7 +142,7 @@ table SalesRaw
 
 	column Gross_Amount
 		dataType: double
-		lineageTag: 32d1c947-0a82-4bb4-aefd-f809b37103e0
+		lineageTag: 2ba4f6c9-3a32-405f-9b90-280eb80c59eb
 		summarizeBy: sum
 		sourceColumn: Gross_Amount
 
@@ -153,7 +152,7 @@ table SalesRaw
 
 	column NetAmount
 		dataType: double
-		lineageTag: d07728d8-e8fc-4dc2-b205-9b12324b7373
+		lineageTag: f71a474a-1964-47b9-8e8e-38edd062ce9b
 		summarizeBy: sum
 		sourceColumn: NetAmount
 
@@ -163,7 +162,7 @@ table SalesRaw
 
 	column 'Tax Amount'
 		dataType: double
-		lineageTag: 1daae04d-9cf7-43bd-b9dd-89ab71ffc0b7
+		lineageTag: c837ff25-76a1-44a9-ac1f-e89b70160f0f
 		summarizeBy: sum
 		sourceColumn: Tax Amount
 
@@ -173,7 +172,7 @@ table SalesRaw
 
 	column 'Total Amount'
 		dataType: double
-		lineageTag: b5ede44d-d7e5-4eb2-bfb8-4aab50dd6049
+		lineageTag: 8d70060b-307a-4132-abec-0925ff5473ac
 		summarizeBy: sum
 		sourceColumn: Total Amount
 
@@ -183,7 +182,7 @@ table SalesRaw
 
 	column Order_Status
 		dataType: string
-		lineageTag: 4b918aee-d8da-4fe3-943d-042e0460915c
+		lineageTag: 21101f2b-cf27-404f-99f2-e6689740690d
 		summarizeBy: none
 		sourceColumn: Order_Status
 
@@ -192,7 +191,7 @@ table SalesRaw
 	column order_dt
 		dataType: dateTime
 		formatString: Long Date
-		lineageTag: 5a9fb305-5db4-45db-a908-305f1a2c42a9
+		lineageTag: 67352310-c467-46da-9fca-bb0d9af48626
 		summarizeBy: none
 		sourceColumn: order_dt
 
@@ -203,7 +202,7 @@ table SalesRaw
 	column order_month_txt
 		dataType: dateTime
 		formatString: Long Date
-		lineageTag: 72411800-7c70-4565-a305-8604b2b2dd9f
+		lineageTag: e82f812a-be8f-40ba-8846-e3e4ea12a4f5
 		summarizeBy: none
 		sourceColumn: order_month_txt
 
@@ -214,7 +213,7 @@ table SalesRaw
 	column 'Fiscal Year'
 		dataType: int64
 		formatString: 0
-		lineageTag: 511f27e4-a2e3-4b04-8dc8-4cc5112db921
+		lineageTag: 54d48794-22a4-402f-90aa-8d0aaa8ed919
 		summarizeBy: sum
 		sourceColumn: Fiscal Year
 
@@ -222,7 +221,7 @@ table SalesRaw
 
 	column is_renewal
 		dataType: string
-		lineageTag: d8960b53-aae3-425f-a49b-da5fcf9b6d62
+		lineageTag: 77f43973-f6da-49d7-94b6-97af6966daab
 		summarizeBy: none
 		sourceColumn: is_renewal
 
@@ -238,6 +237,8 @@ table SalesRaw
 				    #"Changed Type" = Table.TransformColumnTypes(#"Promoted Headers",{{"OrderID", type text}, {"Order Date", type text}, {"orderdate", type any}, {"Date_of_Order", type datetime}, {"Cust ID", Int64.Type}, {"Customer Name", type text}, {"customer_email", type text}, {"Customer Segment", type text}, {"Region", type text}, {"Salesperson", type text}, {"channel", type text}, {"Product ID", type text}, {"Product Name", type text}, {"product_category", type text}, {"Qty", type any}, {"Unit Price", type any}, {"discount %", Int64.Type}, {"Gross_Amount", type number}, {"NetAmount", type number}, {"Tax Amount", type number}, {"Total Amount", type number}, {"Order_Status", type text}, {"order_dt", type date}, {"order_month_txt", type date}, {"Fiscal Year", Int64.Type}, {"is_renewal", type any}})
 				in
 				    #"Changed Type"
+
+	changedProperty = Name
 
 	annotation PBI_ResultType = Table
 
