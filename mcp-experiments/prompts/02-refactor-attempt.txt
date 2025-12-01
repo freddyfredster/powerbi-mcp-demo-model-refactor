@@ -1,17 +1,11 @@
-@powerbi I want to create a proper star schema.
+@powerbi Inspect the current semantic model in detail. 
+List all tables, all columns, and their data types. 
+Flag potential data issues, including:
+- mixed data types
+- ambiguous or duplicate date columns
+- numeric fields stored as text
+- unused or redundant columns
+- columns suitable for dimensions
+- columns suitable for a FactSales table
 
-1. From the Sales table, extract distinct lists into:
-   - DimCustomer
-   - DimProduct
-   - DimDate (based on the SalesDate column)
-
-2. Add surrogate keys for each dimension.
-3. Build a Fact_Sales table with only numeric and foreign key columns.
-4. Create relationships:
-   - Fact_Sales → DimCustomer
-   - Fact_Sales → DimProduct
-   - Fact_Sales → DimDate
-
-5. Mark DimDate as a date table.
-6. Auto-hide all key columns from report view.
-7. Show me the model diagram after changes.
+Return the results in a structured summary format.

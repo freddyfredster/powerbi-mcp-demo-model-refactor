@@ -1,11 +1,1 @@
-@powerbi Inspect the current semantic model in detail. 
-List all tables, all columns, and their data types. 
-Flag potential data issues, including:
-- mixed data types
-- ambiguous or duplicate date columns
-- numeric fields stored as text
-- unused or redundant columns
-- columns suitable for dimensions
-- columns suitable for a FactSales table
-
-Return the results in a structured summary format.
+@powerbi what models are currently available?
