@@ -1,9 +1,0 @@
-@powerbi Connect to the PBIP model.
-
-1. List all tables and columns.
-2. Identify any columns ending with _id, _key or containing surrogate keys and hide them.
-3. Create measure folders: “Revenue”, “Customers”, “Dates”.
-4. Move existing measures into the correct folder based on their logic.
-5. Standardise measure names into Pascal Case with spaces. 
-6. Apply consistent format strings (currency, whole number, percentage).
-7. Show me a summary of proposed changes before applying.

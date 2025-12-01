@@ -1,101 +1,120 @@
-# Power BI Model Refactor with MCP + GitHub Copilot  
-Using Natural Language to Clean, Optimise, and Govern a Power BI Semantic Model
+# Power BI MCP Experiment — Refactoring a Messy Sales Model with Natural Language
 
-This demo shows how to use the **Power BI Modeling MCP Server** with **GitHub Copilot** inside VS Code to:
-- Inspect and refactor a Power BI semantic model using natural language  
-- Apply best-practice modelling patterns in seconds  
-- Optimise DAX with performance metrics  
-- Make changes safely using PBIP + GitHub version control  
+This repo documents my early experiments using the **Power BI Modeling MCP Server** inside VS Code to refactor a Power BI model using natural-language prompts.
 
----
+I used a deliberately messy Sales dataset, exported the file as PBIP, and then asked the MCP agent to analyse the model and suggest a cleaner schema. Some of the results were genuinely impressive… and some of them completely broke the PBIP project.
 
-## 🚀 What This Demo Covers
-
-### 1. Natural Language Model Refactoring  
-- Renaming measures  
-- Creating measure folders  
-- Hiding technical columns  
-- Fixing relationships  
-- Enforcing naming conventions  
-- Building dimensions from a flat table
-
-### 2. Semantic Model Best Practice Sweep  
-- Standardising date formats  
-- Marking date tables  
-- Hiding surrogate keys  
-- Identifying ambiguous relationships  
-- Preparing for governance
-
-### 3. DAX Performance Tuning  
-- Running DAX queries with real execution metrics  
-- Detecting slow patterns (iterators, auto-exist, cardinality issues)  
-- Generating improved versions of the measure  
+This repo is not a polished tutorial.  
+It's closer to **experimental field notes** — what worked, what didn’t, and how the tooling behaves today.
 
 ---
 
-## 🧰 Tools Used
-- **Power BI Desktop** (Modern metadata ON)  
-- **PBIP Project Format**  
-- **VS Code**  
-- **GitHub Copilot + MCP Modeling Server**  
-- **DAX Query Runner (via MCP tools)**  
+## 🚀 What Worked
+
+### **1. Model analysis**
+My first prompt asked the agent to inspect the semantic model:
+
+- List tables, columns, and data types  
+- Identify messy fields  
+- Suggest a star schema  
+- Highlight potential dimension candidates  
+
+This worked extremely well.  
+The agent understood the model and gave solid recommendations.
+
+Prompt + full response are included in:
+
+mcp-experiments/prompts/01-initial-analysis.txt
+mcp-experiments/responses/01-initial-analysis-response.md
+
 
 ---
 
-## 📂 Repo Structure
+## ⚠️ What Didn’t Work (Yet)
+
+### **2. Structural model edits**
+I then tried asking the agent to:
+
+- Create dimension tables  
+- Split out fact tables  
+- Build relationships  
+- Hide / rename columns  
+
+The agent generated what looked like correct TMDL, but the structure did **not** load in Power BI Desktop. Some errors included:
+
+- Unsupported properties  
+- Invalid indentation  
+- Broken table metadata  
+
+This is preview tooling, so it’s expected.  
+Still promising — but not ready for production models.
+
+Prompt + full response included in:
+
+mcp-experiments/prompts/02-refactor-attempt.txt
+mcp-experiments/responses/02-refactor-attempt-response.md
+
+
+---
+
+## 📁 Repo Content Overview
 
 ```
-powerbi-mcp-demo-model-refactor/
+powerbi-mcp-sales-experiments/
 │
 ├── README.md
 │
-├── pbip-model/
-│ └── (PBIP model files)
+├── data/
+│   └── raw/
+│       └── messy_sales_raw.xlsx
 │
-├── results/
-│ ├── before-after-diff/
-│ ├── model-diagram-before.png
-│ ├── model-diagram-after.png
-│ └── performance-metrics.json
+├── pbip-baseline/
+│   └── (clean PBIP export that opens successfully in Desktop)
 │
-├── prompts/
-│ ├── 01-cleanup.txt
-│ ├── 02-star-schema.txt
-│ ├── 03-best-practice-sweep.txt
-│ └── 04-dax-performance.txt
-│
-└── docs/
-├── walkthrough.md
-├── mcp-architecture.png
-└── what-changed.md
+└── mcp-experiments/
+    ├── prompts/
+    │   ├── 01-initial-analysis.txt
+    │   └── 02-refactor-attempt.txt
+    │
+    └── responses/
+        ├── 01-initial-analysis-response.md
+        └── 02-refactor-attempt-response.md
 ```
----
 
-## 📝 How to Run This Yourself
+## 📝 Lessons Learned
 
-1. Install:  
-   - GitHub Copilot  
-   - GitHub Copilot Chat  
-   - Power BI Modeling MCP Server VS Code extension  
+The analysis capabilities are already very strong.
 
-2. In Power BI Desktop:  
-   - Enable PBIP project storage  
-   - Save your model as a PBIP  
+The write capabilities (editing TMDL) are still unstable and may break PBIP files.
 
-3. Open the PBIP folder in VS Code  
-4. Open the Copilot Chat sidebar  
-5. Start sending natural-language commands  
+Git is essential — commit before every MCP operation.
 
----
+For now, use MCP for review, documentation, and suggestions, not automated refactoring.
 
-## 📸 Before/After Preview
+## 🔧 How to Try This Yourself
 
-**Before:** unstructured model, messy columns, inconsistent naming  
-**After:** clean star schema, standardised measures, optimised DAX  
+Clone the repo
 
-Screenshots located in `/results/before-after-diff/`.
+Open the PBIP baseline in Power BI Desktop
 
----
+Open the folder in VS Code
 
-## ✍️ Credits  
-Created by Freddy — sharing my process for anyone who wants to build cleaner, scalable Power BI models using modern AI tooling.
+Enable Copilot Chat + install the Power BI Modeling MCP extension
+
+Run the prompts in /mcp-experiments/prompts
+
+Compare your results with the responses in /responses
+
+## 💬 Share Your Findings
+
+I’ve posted about this experiment on LinkedIn — the repo link is in the comments.
+
+If you've tried the MCP server for Power BI:
+
+Did it work for you?
+
+Did anything break?
+
+Any best practices?
+
+I’m curious to see how others are using it and how fast this tooling improves.
