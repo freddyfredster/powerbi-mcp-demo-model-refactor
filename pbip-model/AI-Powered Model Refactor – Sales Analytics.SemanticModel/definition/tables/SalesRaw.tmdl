@@ -1,4 +1,4 @@
-table fact_Sales
+table SalesRaw
 	lineageTag: d131fb43-3cc0-47db-8163-8235a01f2c46
 
 	column OrderID
@@ -227,7 +227,7 @@ table fact_Sales
 
 		annotation SummarizationSetBy = Automatic
 
-	partition fact_Sales = m
+	partition SalesRaw = m
 		mode: import
 		source =
 				let

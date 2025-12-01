@@ -13,7 +13,7 @@
             "x": 0,
             "y": 0
           },
-          "nodeIndex": "fact_Sales",
+          "nodeIndex": "SalesRaw",
           "size": {
             "height": 300,
             "width": 234
